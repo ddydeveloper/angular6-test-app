@@ -1,1 +1,19 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+$margin-large: 40px;
+$margin-middle: 20px;
+$margin-small: 10px;
+
+.spacer { flex: 1 1 auto; }
+
+.margin-r { margin-right: $margin-middle; }
+.margin-l { margin-left: $margin-middle; }
+.margin-t { margin-top: $margin-middle; }
+.margin-b { margin-bottom: $margin-middle; }
+.margin-a { margin: $margin-middle }
+
+.margin-r-large { margin-right: $margin-large; }
+.margin-l-large { margin-left: $margin-large; }
+.margin-t-large { margin-top: $margin-large; }
+.margin-b-large { margin-bottom: $margin-large; }
+.margin-a-large { margin: $margin-large }

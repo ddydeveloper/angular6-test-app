@@ -10,6 +10,7 @@ import { PatientComponent } from './containers/patient/patient.component';
 import { NotFoundComponent } from './containers/notfound/notFound.component';
 import { ScheduleComponent } from './containers/schedule/schedule.component';
 import { HistoryComponent } from './containers/history/history.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 // определение маршрутов
 const appRoutes: Routes = [
@@ -31,7 +32,13 @@ const appRoutes: Routes = [
     HistoryComponent,
     ScheduleComponent
   ],
-  imports:      [ BrowserModule, BrowserAnimationsModule, MaterialModule, RouterModule.forRoot(appRoutes) ],
-  bootstrap:    [ AppComponent ]
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    MDBBootstrapModule,
+    RouterModule.forRoot(appRoutes)
+  ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
