@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import Specialization from '../../models/specialization';
+import DataService from '../../services/dataService';
+import User from '../../models/user';
+import Patient from '../../models/patient';
 
 export interface PeriodicElement {
   name: string;
@@ -7,67 +12,50 @@ export interface PeriodicElement {
   symbol: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 7, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 8, name: 'Boron', weight: 10.811, symbol: 'B'}
+const times: string[] = [
+  '08:00', '09:00', '10:00',
+  '11:00', '12:00', '13:00',
+  '14:00', '15:00', '16:00',
+  '17:00', '18:00', '19:00'
 ];
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  options: FormGroup;
 
-  constructor() { }
+  times: string[] = [];
+  startTime: string = null;
+  endTime: string = null;
 
-  public chartType = 'bar';
+  illnesses = Specialization;
+  department: Specialization = null;
+  date: Date = null;
+  note: string = null;
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  doctors: User[] = [];
+  doctorId: number = null;
 
-  dataSource = ELEMENT_DATA;
+  patients: Patient[] = [];
+  patientId: number = null;
 
-  public chartDatasets: Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'My First dataset'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'My Second dataset'}
-  ];
+  constructor(builder: FormBuilder, dataService: DataService) {
+    this.doctors = dataService.getUsers();
+    this.patients = dataService.getPatients();
+    this.times = times;
+  }
 
-  public chartLabels: Array<any> = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+  onDoctorChanged(id: number) {
+    debugger;
+    this.doctorId = id;
+  }
 
-  public chartColors: Array<any> = [
-    {
-      backgroundColor: 'rgba(220,220,220,0.2)',
-      borderColor: 'rgba(220,220,220,1)',
-      borderWidth: 2,
-      pointBackgroundColor: 'rgba(220,220,220,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(220,220,220,1)'
-    },
-    {
-      backgroundColor: 'rgba(151,187,205,0.2)',
-      borderColor: 'rgba(151,187,205,1)',
-      borderWidth: 2,
-      pointBackgroundColor: 'rgba(151,187,205,1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: 'rgba(151,187,205,1)'
-    }
-  ];
-
-  public chartOptions: any = {
-    responsive: true
-  };
-
-  public chartClicked(e: any): void { }
-  public chartHovered(e: any): void { }
+  onChange(event: any) {
+    debugger;
+  }
 
   ngOnInit() { }
-
 }

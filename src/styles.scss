@@ -17,3 +17,7 @@ $margin-small: 10px;
 .margin-t-large { margin-top: $margin-large; }
 .margin-b-large { margin-bottom: $margin-large; }
 .margin-a-large { margin: $margin-large }
+
+.form-control {
+    border-color: transparent;
+}
