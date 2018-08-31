@@ -1,7 +1,7 @@
 <div>
   <div fxLayout="row" fxLayoutGap="50px">
     <mat-form-field class="form-control">
-      <mat-select placeholder="Patient" [value]="patientId" (onChange)="patientChanged($event)">
+      <mat-select placeholder="Patient">
         <mat-option *ngFor="let item of patients" [value]="item.id">
             {{item.firstName}} {{item.lastName}}
         </mat-option>
@@ -9,13 +9,13 @@
     </mat-form-field>
 
     <mat-form-field class="form-control">
-      <input matInput [matDatepicker]="date" placeholder="Date" [value]="date" (onChange)="dateChanged($event)">
+      <input matInput [matDatepicker]="date" placeholder="Date">
       <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
       <mat-datepicker #date></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="form-control">
-      <mat-select placeholder="Department" [value]="department" (onChange)="departmentChanged($event)">
+      <mat-select placeholder="Department">
         <mat-option *ngFor="let item of illnesses | enumKeys" [value]="item.value">
             {{item.value}}
         </mat-option>
@@ -25,7 +25,7 @@
 
   <div fxLayout="row" fxLayoutGap="50px">
     <mat-form-field class="form-control">
-      <mat-select placeholder="Start time" [value]="startTime" (onChange)="startTimeChanged($event)">
+      <mat-select placeholder="Start time">
         <mat-option *ngFor="let time of times" [value]="time">
           {{time}}
         </mat-option>
@@ -33,7 +33,7 @@
     </mat-form-field>
 
     <mat-form-field class="form-control">
-      <mat-select placeholder="End time" [value]="endTime" (change)="endTimeChanged($event)">
+      <mat-select placeholder="End time">
         <mat-option *ngFor="let time of times" [value]="time">
           {{time}}
         </mat-option>
@@ -42,7 +42,7 @@
 
     
       <mat-form-field class="form-control">
-          <mat-select placeholder="Doctor" [value]="doctorId" (change)="onDoctorChanged($event.target.value)">
+          <mat-select placeholder="Doctor">
             <mat-option *ngFor="let item of doctors" [value]="item.id">
                 {{item.firstName}} {{item.lastName}}
             </mat-option>

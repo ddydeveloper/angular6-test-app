@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { OnInit, Component, Injectable, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import Specialization from '../../models/specialization';
 import DataService from '../../services/dataService';
@@ -42,19 +42,18 @@ export class DashboardComponent implements OnInit {
   patients: Patient[] = [];
   patientId: number = null;
 
-  constructor(builder: FormBuilder, dataService: DataService) {
-    this.doctors = dataService.getUsers();
-    this.patients = dataService.getPatients();
-    this.times = times;
+  constructor() {
+    // this.doctors = dataService.getUsers();
+    // this.patients = dataService.getPatients();
+    // this.times = times;
   }
 
   onDoctorChanged(id: number) {
-    debugger;
     this.doctorId = id;
   }
 
   onChange(event: any) {
-    debugger;
+
   }
 
   ngOnInit() { }

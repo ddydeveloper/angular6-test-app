@@ -1,13 +1,14 @@
 import { TestBed, async } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
-import { MaterialModule } from '../../material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from '../../material.module';
+import { EnumKeysPipe } from '../../pipes/enumKeys';
 
 describe('DashboardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ],
+      declarations: [ DashboardComponent, EnumKeysPipe ],
       imports: [ MaterialModule, RouterTestingModule.withRoutes([]), BrowserAnimationsModule ]
     }).compileComponents();
   }));
