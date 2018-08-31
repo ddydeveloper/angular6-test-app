@@ -15,12 +15,14 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { PipesModule } from './pipes.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material.module';
+import { DataService } from './services/dataService';
+import { HttpClientModule } from '@angular/common/http';
 
 // определение маршрутов
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent},
   { path: 'account/:id', component: AccountComponent},
-  { path: 'account/:id/history', component: HistoryComponent},
+  { path: 'history', component: HistoryComponent},
   { path: 'account/:id/schedule', component: ScheduleComponent},
   { path: 'patient/:id', component: PatientComponent },
   { path: '**', component: DashboardComponent }
@@ -37,6 +39,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     PipesModule,
+    HttpClientModule,
     RouterModule.forRoot(appRoutes),
     FlexLayoutModule.withConfig({useColumnBasisZero: false}),
     BrowserModule,
@@ -48,6 +51,7 @@ const appRoutes: Routes = [
     CdkTableModule,
     MaterialModule
   ],
+  providers: [ DataService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

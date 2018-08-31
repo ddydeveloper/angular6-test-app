@@ -9,7 +9,7 @@ describe('DashboardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DashboardComponent, EnumKeysPipe ],
-      imports: [ MaterialModule, RouterTestingModule.withRoutes([]), BrowserAnimationsModule ]
+      imports: [ RouterTestingModule.withRoutes([]), BrowserAnimationsModule, MaterialModule ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

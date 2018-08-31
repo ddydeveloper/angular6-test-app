@@ -1,22 +1,22 @@
-<div>
+<form [formGroup]="options" (ngSubmit)="onSubmit()">
   <div fxLayout="row" fxLayoutGap="50px">
     <mat-form-field class="form-control">
-      <mat-select placeholder="Patient">
-        <mat-option *ngFor="let item of patients" [value]="item.id">
+      <mat-select placeholder="Patient" formControlName="patientId">
+        <mat-option *ngFor="let item of patients | async" [value]="item.id">
             {{item.firstName}} {{item.lastName}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field class="form-control">
-      <input matInput [matDatepicker]="date" placeholder="Date">
+      <input matInput [matDatepicker]="date" placeholder="Date" formControlName="date">
       <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
       <mat-datepicker #date></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="form-control">
-      <mat-select placeholder="Department">
-        <mat-option *ngFor="let item of illnesses | enumKeys" [value]="item.value">
+      <mat-select placeholder="Department" formControlName="departmentId">
+        <mat-option *ngFor="let item of departments | enumKeys" [value]="item.value">
             {{item.value}}
         </mat-option>
       </mat-select>
@@ -25,7 +25,7 @@
 
   <div fxLayout="row" fxLayoutGap="50px">
     <mat-form-field class="form-control">
-      <mat-select placeholder="Start time">
+      <mat-select placeholder="Start time" formControlName="startTime">
         <mat-option *ngFor="let time of times" [value]="time">
           {{time}}
         </mat-option>
@@ -33,33 +33,36 @@
     </mat-form-field>
 
     <mat-form-field class="form-control">
-      <mat-select placeholder="End time">
+      <mat-select placeholder="End time" formControlName="endTime">
         <mat-option *ngFor="let time of times" [value]="time">
           {{time}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-
     
-      <mat-form-field class="form-control">
-          <mat-select placeholder="Doctor">
-            <mat-option *ngFor="let item of doctors" [value]="item.id">
-                {{item.firstName}} {{item.lastName}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+    <mat-form-field class="form-control">
+      <mat-select placeholder="Doctor" formControlName="doctorId">
+        <mat-option *ngFor="let item of doctors | async" [value]="item.id">
+            {{item.firstName}} {{item.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
  
   <div fxLayout="row"> 
     <mat-form-field class="form-control">
-      <textarea matInput matTextareaAutosize matAutosizeMinRows="4" matAutosizeMaxRows="10" placeholder="Note" (input)="onChange($event)"></textarea>
+      <textarea matInput 
+          matTextareaAutosize 
+          matAutosizeMinRows="4" 
+          matAutosizeMaxRows="10" 
+          placeholder="Note" 
+          formControlName="note">        
+      </textarea>
     </mat-form-field>
   </div>
 
-  <div fxLayout="row" class="form-control"> 
+  <div fxLayout="row"> 
     <span class="spacer"></span>
-    <button mat-flat-button>Submit</button>
+    <button type="submit" mat-flat-button [disabled]="!options.valid">Submit</button>
   </div>
-</div>
-
-  
+</form>
