@@ -32,14 +32,15 @@ export class DataService {
         return this.http.get<Patient[]>(`${apiUrl}/patients`, options);
     }
 
-    public getAppointments = (date: Date = null): Observable<Appointment[]> => {
+    public getAppointments = (sortBy: string, order: string, skip: number, take: number, date: Date = null): Observable<Appointment[]> => {
         if (!date) {
             date = new Date(Date.now());
         }
 
-        const isoDate = date.toDateString();
+        const url = `${apiUrl}/appointments/${date.toDateString()}`;
+        const queryParams = `sortBy=${sortBy}&order=${order}&skip=${skip}&take=${take}`;
 
-        return this.http.get<Appointment[]>(`${apiUrl}/appointments/${isoDate}`, options);
+        return this.http.get<Appointment[]>(`${url}?${queryParams}`, options);
     }
 
     public addAppointment = (appointment: Appointment): Observable<Appointment> => {

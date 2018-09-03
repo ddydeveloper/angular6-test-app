@@ -7,11 +7,15 @@ import { Component } from '@angular/core';
                   <button mat-icon-button routerLink="">
                     <mat-icon color="primary">home</mat-icon>
                   </button>
+                  <button mat-icon-button routerLink="history">
+                    <mat-icon>list</mat-icon>
+                  </button>
                   <span class="spacer"></span>
-                  <span class="margin-r">Ivanov Ivan</span>
                   <button mat-flat-button>Logout</button>
                 </mat-toolbar>
-                <router-outlet></router-outlet>
+                <div class="basic-container">
+                  <router-outlet></router-outlet>
+                </div>
               </div>`
 })
 export class AppComponent {
