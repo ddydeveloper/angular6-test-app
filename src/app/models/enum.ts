@@ -1,18 +1,18 @@
 enum Department {
     Unknown = 0,
-    Therapy = 1,
-    Dermatology = 2,
-    Surgery = 3,
-    Oncology = 4
+    Therapy,
+    Dermatology,
+    Surgery,
+    Oncology
 }
 
 enum Title {
     Unknown = 0,
-    Bachelor = 1,
-    Intern = 2,
-    Ordinator = 3,
-    Candidate = 4,
-    Doctor = 5,
+    Bachelor,
+    Intern,
+    Ordinator,
+    Candidate,
+    Doctor,
 }
 
 export {

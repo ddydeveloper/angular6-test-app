@@ -5,9 +5,8 @@ import { Observable } from 'rxjs';
 
 const apiUrl = 'https://localhost:44383/api';
 
-const headers = new HttpHeaders()
-    .set('Content-Type', 'application/json;v=1.0')
-    .set('Accept', 'application/json;v=1.0');
+const headers = new HttpHeaders().set('Accept', 'application/json; v=1.0').set('Content-type', 'application/json; v=1.0');
+const options = { headers: headers };
 
 @Injectable({
     providedIn: 'root'
@@ -18,29 +17,34 @@ export class DataService {
     }
 
     public getDoctor = (id: number): Observable<Doctor> => {
-        return this.http.get<Doctor>(`${apiUrl}/doctors/${id}`);
+        return this.http.get<Doctor>(`${apiUrl}/doctors/${id}`, options);
     }
 
     public getDoctors = (): Observable<Doctor[]> => {
-        return this.http.get<Doctor[]>(`${apiUrl}/doctors`);
+        return this.http.get<Doctor[]>(`${apiUrl}/doctors`, options);
     }
 
     public getPatient = (id: number): Observable<Patient> => {
-        return this.http.get<Patient>(`${apiUrl}/patients/${id}`);
+        return this.http.get<Patient>(`${apiUrl}/patients/${id}`, options);
     }
 
     public getPatients = (): Observable<Patient[]> => {
-        return this.http.get<Patient[]>(`${apiUrl}/patients`);
+        return this.http.get<Patient[]>(`${apiUrl}/patients`, options);
     }
 
     public getAppointments = (date: Date = null): Observable<Appointment[]> => {
-        return this.http.get<Appointment[]>(`${apiUrl}/appointments/${date}`);
+        if (!date) {
+            date = new Date(Date.now());
+        }
+
+        const isoDate = date.toDateString();
+
+        return this.http.get<Appointment[]>(`${apiUrl}/appointments/${isoDate}`, options);
     }
 
     public addAppointment = (appointment: Appointment): Observable<Appointment> => {
-        appointment.departmentId = 1;
+        appointment.id = 0;
         const body = JSON.stringify(appointment);
-        const options = { headers: headers };
 
         return this.http.post<Appointment>(`${apiUrl}/appointments`, body, options);
     }

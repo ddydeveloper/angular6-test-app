@@ -2,7 +2,7 @@
   <div fxLayout="row" fxLayoutGap="50px">
     <mat-form-field class="form-control">
       <mat-select placeholder="Patient" formControlName="patientId">
-        <mat-option *ngFor="let item of patients | async" [value]="item.id">
+        <mat-option *ngFor="let item of patients$ | async" [value]="item.id">
             {{item.firstName}} {{item.lastName}}
         </mat-option>
       </mat-select>
@@ -16,7 +16,7 @@
 
     <mat-form-field class="form-control">
       <mat-select placeholder="Department" formControlName="departmentId">
-        <mat-option *ngFor="let item of departments | enumKeys" [value]="item.value">
+        <mat-option *ngFor="let item of departments | enumKeys" [value]="item.key">
             {{item.value}}
         </mat-option>
       </mat-select>
@@ -42,7 +42,7 @@
     
     <mat-form-field class="form-control">
       <mat-select placeholder="Doctor" formControlName="doctorId">
-        <mat-option *ngFor="let item of doctors | async" [value]="item.id">
+        <mat-option *ngFor="let item of doctors$ | async" [value]="item.id">
             {{item.firstName}} {{item.lastName}}
         </mat-option>
       </mat-select>

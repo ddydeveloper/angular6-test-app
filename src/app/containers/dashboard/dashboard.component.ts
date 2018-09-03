@@ -29,8 +29,8 @@ export class DashboardComponent implements OnInit {
   times: string[] = [];
   departments = Department;
 
-  doctors: Observable<Doctor[]>;
-  patients: Observable<Patient[]>;
+  doctors$: Observable<Doctor[]>;
+  patients$: Observable<Patient[]>;
 
   constructor(public fb: FormBuilder, public dataService: DataService) {
 
@@ -66,8 +66,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.doctors = this.dataService.getDoctors();
-    this.patients = this.dataService.getPatients();
+    this.doctors$ = this.dataService.getDoctors();
+    this.patients$ = this.dataService.getPatients();
     this.times = times;
 
     this.createForm();
