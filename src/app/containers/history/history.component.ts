@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Appointment } from '../../models/api';
 import { DataService } from '../../services/dataService';
-import { Observable, merge, of as observableOf } from 'rxjs';
-import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
+import { merge, of as observableOf } from 'rxjs';
+import { MatSort, MatPaginator } from '@angular/material';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-history',
@@ -21,6 +20,10 @@ export class HistoryComponent implements OnInit {
   isLoadingResults = true;
   isRateLimitReached = false;
 
+  pageSizes: number[] = [5, 10, 25, 50];
+  activeSort = 'date';
+  activeDirection = 'asc';
+
   constructor(public dataService: DataService) {
 
   }
@@ -34,9 +37,9 @@ export class HistoryComponent implements OnInit {
           this.isLoadingResults = true;
 
           const skip: number = this.paginator.pageIndex > 1 ? (this.paginator.pageIndex - 1) * this.paginator.pageSize : 0;
-          const take: number = this.paginator.pageSize ? this.paginator.pageSize : 5;
-          const sortBy = this.sort.active ? this.sort.active : 'date';
-          const direction = this.sort.direction ? this.sort.direction : 'asc';
+          const take: number = this.paginator.pageSize ? this.paginator.pageSize : this.pageSizes[0];
+          const sortBy = this.sort.active ? this.sort.active : this.activeSort;
+          const direction = this.sort.direction ? this.sort.direction : this.activeDirection;
 
           return this.dataService.getAppointments(sortBy, direction, skip, take);
         }),
