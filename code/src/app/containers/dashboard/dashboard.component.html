@@ -1,4 +1,4 @@
-<form [formGroup]="options" (ngSubmit)="onSubmit()">
+<form [formGroup]="options" (ngSubmit)="onSubmit($event)">
   <div fxLayout="row" fxLayoutGap="50px">
     <mat-form-field class="form-control">
       <mat-select placeholder="Patient" formControlName="patientId">
