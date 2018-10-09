@@ -3,7 +3,7 @@ import { Patient, Appointment, Doctor } from '../models/api';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const apiUrl = 'http://localhost:60171/api';
+const apiUrl = 'https://asp-net-api-ddy.azurewebsites.net';
 
 const headers = new HttpHeaders().set('Accept', 'application/json; v=1.0').set('Content-type', 'application/json; v=1.0');
 const options = { headers: headers };
