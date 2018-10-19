@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule} from '@angular/router';
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
-import { AccountComponent } from './containers/account/account.component';
 import { PatientComponent } from './containers/patient/patient.component';
 import { ScheduleComponent } from './containers/schedule/schedule.component';
 import { HistoryComponent } from './containers/history/history.component';
@@ -21,7 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
 // определение маршрутов
 const appRoutes: Routes = [
   { path: '', component: DashboardComponent},
-  { path: 'account/:id', component: AccountComponent},
   { path: 'history', component: HistoryComponent},
   { path: 'account/:id/schedule', component: ScheduleComponent},
   { path: 'patient/:id', component: PatientComponent },
@@ -32,7 +30,6 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     DashboardComponent,
-    AccountComponent,
     PatientComponent,
     HistoryComponent,
     ScheduleComponent,

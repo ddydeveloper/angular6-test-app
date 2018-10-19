@@ -6,4 +6,4 @@ before_install:
   - docker build -t ddydeveloper/angular6-test-app .
 
 script:
-  - docker run -t ddydeveloper/angular6-test-app npm run test -- --coverage
+  - docker run -t ddydeveloper/angular6-test-app npm run test

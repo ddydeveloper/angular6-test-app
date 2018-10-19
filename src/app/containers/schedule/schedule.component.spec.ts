@@ -3,7 +3,7 @@ import { ScheduleComponent } from './schedule.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('AccountComponent', () => {
+describe('ScheduleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ ScheduleComponent ],
