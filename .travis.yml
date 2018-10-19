@@ -8,6 +8,10 @@ cache:
 node_js:
   - 8
 before_install:
+  - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-1.9.8-ubuntu-12.04.tar.bz2
+  - tar -xjf phantomjs-2.0.0-ubuntu-12.04.tar.bz2
+  - sudo rm -rf /usr/local/phantomjs/bin/phantomjs
+  - sudo mv phantomjs /usr/local/phantomjs/bin/phantomjs
   - npm install -g node-gyp
   - npm install -g @angular/cli
   # - docker build -t ddydeveloper/angular6-test-app .
