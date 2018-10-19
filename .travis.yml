@@ -3,6 +3,7 @@ services:
   - docker
 
 before_install:
+  - npm install @angular/cli
   - docker build -t ddydeveloper/angular6-test-app .
 
 script:
