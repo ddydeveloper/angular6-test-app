@@ -7,3 +7,12 @@ script:
 
 after_script:
   - docker images
+
+before_deploy:
+  - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS"
+
+deploy:
+  provider: script
+  script: docker push ddydeveloper/angular6-test-app
+  on:
+    branch: master
