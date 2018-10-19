@@ -4,7 +4,6 @@ services:
 
 script:
   - docker build -t ddydeveloper/angular6-test-app .
-  - docker run ddydeveloper/angular6-test-app -d
 
 after_script:
   - docker images
