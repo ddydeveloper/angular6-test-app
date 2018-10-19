@@ -1,14 +1,10 @@
-language: node_js
 sudo: required
 services:
   - docker
-cache:
-   directories:
-     - node_modules
-node_js:
-  - 8
 before_install:
-  - npm install -g @angular/cli
   - docker build -t ddydeveloper/angular6-test-app .
+  - docker run -d -p 127.0.0.1:80:4567 ddydeveloper/angular6-test-app /bin/sh -c "cd /root/angular6-test-app; bundle exec foreman start;"
+  - docker ps -a
+  - docker run ddydeveloper/angular6-test-app /bin/sh -c "cd /root/angular6-test-app; bundle exec rake test"
 script:
-  - docker run -t ddydeveloper/angular6-test-app npm run test
+  - bundle exec rake test
