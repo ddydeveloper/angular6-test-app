@@ -19,5 +19,5 @@ before_script:
   - npm install
 script:
   # - docker run -t ddydeveloper/angular6-test-app npm run test
-  - npm test
+  # - npm test
   - npm prod
